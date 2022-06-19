@@ -6,14 +6,29 @@
 //
 
 import UIKit
+import LBTATools
+import FirebaseAuth
 
 class ConversationVC : UIViewController {
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .blue
+        title = "Home"
+        view.backgroundColor = .white
+        
+        validateAuth()
+        
+        
     }
-
-
+    
+    private func validateAuth() {
+        if FirebaseAuth.Auth.auth().currentUser == nil {
+            let vc = LoginVC()
+            let nav = UINavigationController(rootViewController: vc)
+            nav.modalPresentationStyle = .fullScreen
+            present(nav, animated: false)
+        }
+    }
 }
 

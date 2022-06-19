@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         window?.rootViewController = UINavigationController(rootViewController: ConversationVC())
+        
+        let myColor = UIColor(hue: 0.4, saturation: 0.25, brightness: 1, alpha: 1)
+        
+        let barAppearance = UINavigationBarAppearance()
+        barAppearance.backgroundColor = myColor
+        
+        let navigationBar = UINavigationBar.appearance()
+        navigationBar.standardAppearance = barAppearance
+        navigationBar.scrollEdgeAppearance = barAppearance
+        
+        FirebaseApp.configure()
         
         return true
     }
